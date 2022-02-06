@@ -26,21 +26,6 @@ const loadItem = setColumns => {
     .then(data => setColumns(data));
 };
 
-const updateItem = (issue_number, state) => {
-  fetch(`https://api.github.com/repos/Alexandr1809/alexand/issues/${issue_number}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Basic ${btoa('Alexandr1809' + ':' + "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")}`
-    },
-    body: JSON.stringify({
-      "owner": "garlife",
-      "repo": 'react3-p9-10',
-      "issue_number": issue_number,
-      "state": state
-    })
-})
-};
 
 const columnsFromBackend = {
   open: {
@@ -88,7 +73,6 @@ const onDragEnd = (result, columns, setColumns) => {
       }
     });
   }
-  updateItem(result.draggableId, destination.droppableId)
 };
 
 export default function App() {
